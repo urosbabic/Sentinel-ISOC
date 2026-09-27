@@ -3,6 +3,8 @@ title: Sentinel-ISOC
 description: Public GitHub repository for Microsoft Sentinel ISOC content managed and deployed through repository-based CI/CD.
 ---
 
+![Microsoft Sentinel](https://img.shields.io/badge/Microsoft%20Sentinel-ISOC-0078D4?style=flat-square&logo=microsoftazure&logoColor=white) ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![ISOC](https://img.shields.io/badge/ISOC-Preview-F2C811?style=flat-square) [![Deploy workflow](https://github.com/urosbabic/Sentinel-ISOC/actions/workflows/sentinel-deploy-da5d2808-5448-4ae4-a353-d6c19980e7e4.yml/badge.svg?branch=main)](https://github.com/urosbabic/Sentinel-ISOC/actions/workflows/sentinel-deploy-da5d2808-5448-4ae4-a353-d6c19980e7e4.yml)
+
 ## Purpose
 
 Sentinel-ISOC is a public source repository for custom Microsoft Sentinel content managed as code for an Integrated Security Operations Center (ISOC) workspace. A repository connection in the Microsoft Defender portal deploys supported content from the selected GitHub branch.
