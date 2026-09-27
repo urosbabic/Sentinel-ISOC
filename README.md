@@ -41,6 +41,24 @@ flowchart LR
     class Workspace,Analytics,Parsers,Playbooks,Workbooks target;
 ```
 
+### From repository to agentic security
+
+```mermaid
+flowchart TB
+    Repo[GitHub Repository] --> CICD[Repositories CI/CD]
+    CICD --> Content["Detections<br/>Playbooks<br/>Workbooks<br/>Parsers"]
+    Content --> ISOC[Integrated Security Operations Center]
+    ISOC --> Context["Shared Context<br/>SIEM + XDR"]
+    Context --> Agentic[Agentic Security]
+
+    classDef source fill:#e8f1ff,stroke:#0078d4,color:#102a43;
+    classDef pipeline fill:#e7f7f4,stroke:#0b6a6a,color:#123;
+    classDef operations fill:#fff4cc,stroke:#d79b00,color:#3b2f00;
+    class Repo,CICD source;
+    class Content,ISOC pipeline;
+    class Context,Agentic operations;
+```
+
 The current connection monitors `main` and is configured for these content types:
 
 * Analytics rules
