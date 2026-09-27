@@ -9,6 +9,10 @@ description: Public GitHub repository for Microsoft Sentinel ISOC content manage
 
 Sentinel-ISOC is a public source repository for custom Microsoft Sentinel content managed as code for an Integrated Security Operations Center (ISOC) workspace. A repository connection in the Microsoft Defender portal deploys supported content from the selected GitHub branch.
 
+ISOC brings SIEM and XDR together in a practitioner-focused Microsoft Defender experience. This repository extends that model with GitOps and DevSecOps practices, allowing detection content and automation to be version-controlled, reviewed, tested, and deployed through CI/CD.
+
+This is also a practical foundation for the agentic SOC, where analysts and AI agents operate with shared security signals, context, and controls.
+
 The Microsoft Sentinel repository experience for ISOC is in preview. Capabilities and availability can change.
 
 ## Connection and deployment
