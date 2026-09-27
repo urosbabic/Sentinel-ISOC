@@ -22,23 +22,32 @@ The Defender repository connection generated the GitHub Actions workflow in `.gi
 ### Deployment flow
 
 ```mermaid
-flowchart LR
-    Contributor[Contributor] -->|reviewed change| Repo[Sentinel-ISOC main branch]
-    Repo -->|push event| Actions[Sentinel-generated GitHub Actions]
-    Actions -->|OIDC token| Entra[Microsoft Entra app registration]
-    Entra -->|RBAC authorization| Workspace[ISOC workspace]
-    Actions -->|smart deployment| Workspace
-    Workspace --> Analytics[Analytics rules]
-    Workspace --> Parsers[Parsers]
-    Workspace --> Playbooks[Playbooks]
-    Workspace --> Workbooks[Workbooks]
+flowchart TB
+    subgraph GitHub["GitHub"]
+        Engineer[Security Engineer] -->|creates and reviews| Content[Detection content and automation]
+        Content --> Repo[Sentinel-ISOC repository]
+        Repo -->|push to main| Actions[GitHub Actions CI/CD workflow]
+    end
+
+    subgraph Entra["Microsoft Entra ID"]
+        FIC[Federated credential: OIDC trust] --> App[SentinelISOC app registration]
+    end
+
+    subgraph Defender["Microsoft Defender"]
+        Repositories[Repositories experience] --> Workspace[ISOC workspace: SIEM + XDR]
+        Workspace --> Operations[Detection engineering, automation, visualization]
+    end
+
+    Actions -->|OIDC token| FIC
+    Actions -->|smart deployment| Repositories
+    App -->|RBAC authorization| Workspace
 
     classDef source fill:#e8f1ff,stroke:#0078d4,color:#102a43;
     classDef identity fill:#e7f7f4,stroke:#0b6a6a,color:#123;
-    classDef target fill:#fff4cc,stroke:#d79b00,color:#3b2f00;
-    class Contributor,Repo,Actions source;
-    class Entra identity;
-    class Workspace,Analytics,Parsers,Playbooks,Workbooks target;
+    classDef defender fill:#fff4cc,stroke:#d79b00,color:#3b2f00;
+    class Engineer,Content,Repo,Actions source;
+    class FIC,App identity;
+    class Repositories,Workspace,Operations defender;
 ```
 
 ### From repository to agentic security
