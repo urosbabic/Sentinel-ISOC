@@ -15,6 +15,28 @@ The Microsoft Sentinel repository experience for ISOC is in preview. Capabilitie
 
 The Defender repository connection generated the GitHub Actions workflow in `.github/workflows/`. Do not edit or remove the generated workflow manually.
 
+### Deployment flow
+
+```mermaid
+flowchart LR
+    Contributor[Contributor] -->|reviewed change| Repo[Sentinel-ISOC main branch]
+    Repo -->|push event| Actions[Sentinel-generated GitHub Actions]
+    Actions -->|OIDC token| Entra[Microsoft Entra app registration]
+    Entra -->|RBAC authorization| Workspace[ISOC workspace]
+    Actions -->|smart deployment| Workspace
+    Workspace --> Analytics[Analytics rules]
+    Workspace --> Parsers[Parsers]
+    Workspace --> Playbooks[Playbooks]
+    Workspace --> Workbooks[Workbooks]
+
+    classDef source fill:#e8f1ff,stroke:#0078d4,color:#102a43;
+    classDef identity fill:#e7f7f4,stroke:#0b6a6a,color:#123;
+    classDef target fill:#fff4cc,stroke:#d79b00,color:#3b2f00;
+    class Contributor,Repo,Actions source;
+    class Entra identity;
+    class Workspace,Analytics,Parsers,Playbooks,Workbooks target;
+```
+
 The current connection monitors `main` and is configured for these content types:
 
 * Analytics rules
